@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Extension</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #5f9341;
+            margin-bottom: 4px;
+        }
+
+        button {
+            background: #5f9341;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="input-el">
+    <button id="save-btn">Save Input</button>
+    <ul id="leadsitems"></ul>
+    <a href=""></a>
+    <script>
+        let leads = []
+        let inputEl = document.getElementById('input-el')
+        let saveBtn = document.getElementById('save-btn')
+        let leadsItems = document.getElementById('leadsitems')
+
+        saveBtn.addEventListener('click', function () {
+            leads.push(inputEl.value)
+            inputEl.value = ''
+            renderLeads()
+        })
+
+
+        function renderLeads() {
+            let listItems = ''
+            for (i = 0; i < leads.length; i++) {
+                // leadsItems.innerHTML += "<li>" + leads[i] + "</li>";
+
+                // let li = document.createElement('li')
+                // li.textContent = leads[i]
+                // leadsItems.append(li)
+                listItems += `<li> 
+                    <a href="${leads[i]}">${leads[i]}</a> 
+                    </li>`
+                console.log(listItems);
+            }
+            leadsItems.innerHTML = listItems
+        }
+
+
+    </script>
+</body>
+
+</html>
